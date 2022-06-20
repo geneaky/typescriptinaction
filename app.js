@@ -72,6 +72,10 @@ function createSquare(config) {
 }
 var mySquare = createSquare({ color: 'black' });
 console.log(mySquare);
+var mySquare2 = createSquare({ width: 100, opacity: 0.5 });
+var mySqaure3 = createSquare({ width: 100, opacity: 0.5 });
+console.log(mySquare2);
+console.log(mySqaure3);
 var p1 = { x: 10, y: 20 };
 var a = [1, 2, 3, 4];
 var ro = a;
@@ -83,4 +87,19 @@ console.log(ro);
 console.log(ro2);
 a = ro;
 console.log(a);
+var mySearch;
+mySearch = function (source, subString) {
+    var result = source.search(subString);
+    return result > -1;
+};
+console.log(mySearch('hihi', 'bi'));
+var mySearch2 = function (src, sub) {
+    var result = src.search(sub);
+    return result > -1;
+};
+console.log(mySearch2('hihi', 'bi'));
+var myArray;
+myArray = ["Bob", "Fred"];
+var myStr = myArray[0];
+console.log(myStr);
 //# sourceMappingURL=app.js.map

@@ -124,6 +124,7 @@ function printLabel(labeledObj: LabeledValue) {
 interface SquareConfig {
     color?: string;
     width?: number;
+    [propName: string]: any;
 }
 
 function createSquare(config: SquareConfig): {color: string, area: number} {
@@ -141,6 +142,13 @@ function createSquare(config: SquareConfig): {color: string, area: number} {
 
 let mySquare = createSquare({color: 'black'})
 console.log(mySquare);
+
+let mySquare2 = createSquare({ width: 100, opacity: 0.5} as SquareConfig);
+
+let mySqaure3 = createSquare({width:100, opacity: 0.5});
+
+console.log(mySquare2)
+console.log(mySqaure3)
 
 interface Point {
     readonly x: number;
@@ -172,3 +180,69 @@ console.log(ro2);
 a = ro as number[];
 
 console.log(a);
+
+interface SearchFunc {
+    (source: string, substring: string): boolean;
+}
+
+let mySearch: SearchFunc;
+
+mySearch = function(source: string, subString: string) {
+    let result = source.search(subString);
+    return result > -1;
+}
+
+console.log(mySearch('hihi','bi'));
+
+let mySearch2: SearchFunc = function(src, sub) {
+
+    let result = src.search(sub);
+    return result > -1;
+}
+
+console.log(mySearch2('hihi','bi'));
+
+interface StringArray {
+    [idx: number]: string;
+}
+
+let myArray: StringArray;
+myArray = ["Bob", "Fred"];
+
+let myStr: string = myArray[0];
+
+console.log(myStr);
+
+class Animal {
+    name: string;
+}
+
+class Dog extends Animal {
+    breed: string;
+}
+
+interface NotOkay {
+    // [x: number]: Animal;
+    [x: string]: Dog;
+}
+
+interface NumberDictionary {
+    [index: string]: number;
+    length: number;
+    // name: string; // 인덱서의 하위 타입이 아니라서 오류
+}
+
+interface NumberOrStringDictionary {
+    [index: string]: number | string;
+    length: number;
+    name: string;
+}
+
+interface ReadonlyStringArray {
+    readonly [index: number]: string;
+}
+
+let myArray2: ReadonlyStringArray = ["Alice", "Bob"];
+// myArray2[2] = "Mallory"; // error!
+
+
