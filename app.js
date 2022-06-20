@@ -183,4 +183,55 @@ var ct = getCounter();
 ct(10);
 ct.interval = 5.0;
 ct.reset();
+var Control = (function () {
+    function Control() {
+    }
+    return Control;
+}());
+var Button = (function (_super) {
+    __extends(Button, _super);
+    function Button() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    Button.prototype.select = function () { };
+    return Button;
+}(Control));
+var TextBox = (function (_super) {
+    __extends(TextBox, _super);
+    function TextBox() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    TextBox.prototype.select = function () { };
+    return TextBox;
+}(Control));
+var Location2 = (function () {
+    function Location2() {
+    }
+    return Location2;
+}());
+function add(x, y) {
+    return x + y;
+}
+var myAdd = function (x, y) {
+    return x + y;
+};
+var myAdd2 = function (x, y) {
+    return x + y;
+};
+var myAdd3 = function (x, y) {
+    return x + y;
+};
+var myAdd4 = function (x, y) { return x + y; };
+var myAdd5 = function (x, y) {
+    return x + y;
+};
+function buildName(firstName, lastName) {
+    if (lastName) {
+        return firstName + lastName;
+    }
+    else {
+        return firstName;
+    }
+}
+console.log(buildName('hi', 'bi'));
 //# sourceMappingURL=app.js.map

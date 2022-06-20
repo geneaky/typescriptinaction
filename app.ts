@@ -428,3 +428,13 @@ let myAdd5: (baseValue: number, increment: number) => number
     return x + y;
 }
 
+function buildName(firstName: string, lastName?: string) {
+    if (lastName) {
+        return firstName + lastName;
+    } else {
+        return firstName;
+    }
+}
+
+console.log(buildName('hi', 'bi'));
+
