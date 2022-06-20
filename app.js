@@ -234,4 +234,21 @@ function buildName(firstName, lastName) {
     }
 }
 console.log(buildName('hi', 'bi'));
+function buildName2(firstName) {
+    var restOfName = [];
+    for (var _i = 1; _i < arguments.length; _i++) {
+        restOfName[_i - 1] = arguments[_i];
+    }
+    return firstName + " " + restOfName.join(" ");
+}
+var employeeName = buildName2("joseph", "samuel", "lucas", "mackinzie");
+console.log(employeeName);
+var buildNameFun = function (fname) {
+    var rest = [];
+    for (var _i = 1; _i < arguments.length; _i++) {
+        rest[_i - 1] = arguments[_i];
+    }
+    return fname + " " + rest.join(" ");
+};
+console.log(buildNameFun("joseph", "samuel", "lucas", "mackinzie"));
 //# sourceMappingURL=app.js.map

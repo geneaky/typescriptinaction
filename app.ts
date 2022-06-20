@@ -438,3 +438,17 @@ function buildName(firstName: string, lastName?: string) {
 
 console.log(buildName('hi', 'bi'));
 
+function buildName2(firstName: string, ...restOfName: string[]) {
+    return firstName + " " + restOfName.join(" ");
+}
+
+let employeeName = buildName2("joseph", "samuel", "lucas", "mackinzie");
+
+console.log(employeeName);
+
+let buildNameFun: (fname: string, ...rest: string[]) => string = (fname: string, ...rest:string[]) => {
+    return fname + " " + rest.join(" ");
+}
+
+console.log(buildNameFun("joseph", "samuel", "lucas", "mackinzie"));
+
