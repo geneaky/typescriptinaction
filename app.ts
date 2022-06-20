@@ -104,3 +104,71 @@ console.log(strLength)
 let strLenght2: number = (someValue as string).length;
 
 console.log(strLenght2)
+
+/*
+function printLabel(labeledObj: { label: string}) {
+    console.log(labeledObj.label);
+}*/
+
+let myObj = {size: 10, label: "Size 10 object"};
+printLabel(myObj);
+
+interface LabeledValue {
+    label: string,
+}
+
+function printLabel(labeledObj: LabeledValue) {
+    console.log(labeledObj.label);
+}
+
+interface SquareConfig {
+    color?: string;
+    width?: number;
+}
+
+function createSquare(config: SquareConfig): {color: string, area: number} {
+    let newSquare = {color: 'white', area: 100};
+    if (config.color) {
+        newSquare.color = config.color;
+    }
+
+    if(config.width) {
+        newSquare.area = config.width * config.width;
+    }
+
+    return newSquare;
+}
+
+let mySquare = createSquare({color: 'black'})
+console.log(mySquare);
+
+interface Point {
+    readonly x: number;
+    readonly y: number;
+}
+
+let p1: Point = { x: 10, y: 20};
+// p1.x = 5; //error!
+
+let a: number[] = [1,2,3,4];
+let ro: ReadonlyArray<number> = a;
+let ro2: readonly number[] = a;
+console.log(ro);
+console.log(ro2);
+a[1] = 7;
+console.log(ro);
+console.log(ro2);
+
+// ro[0] = 12;
+// ro.push(5);
+// ro.length = 100;
+// a = ro;
+
+// ro2[0] = 12;
+// ro2.push(4);
+// ro2.length = 100;
+// a = ro2;
+
+a = ro as number[];
+
+console.log(a);
