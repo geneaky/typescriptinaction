@@ -403,3 +403,28 @@ class TextBox extends Control {
 class Location2 {
 
 }
+
+function add(x: number, y: number): number {
+    return x + y;
+}
+
+let myAdd = function (x: number, y: number): number {
+    return x + y;
+};
+
+let myAdd2: (x: number, y: number) => number =
+    function(x: number, y: number): number {
+        return x + y;}
+
+let myAdd3: (baseValue: number, increment: number) => number //function type
+    = function(x: number, y: number): number {
+    return x + y;}
+
+
+let myAdd4 = function(x: number, y: number): number { return x + y}
+
+let myAdd5: (baseValue: number, increment: number) => number
+=function(x,y) {
+    return x + y;
+}
+
