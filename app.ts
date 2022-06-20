@@ -326,3 +326,80 @@ const Clock2: ClockConstructor2 = class Clock implements ClockInterface3 {
 */
 
 
+interface Shape {
+    color: string;
+}
+
+interface Square extends Shape {
+    sideLength: number;
+}
+
+let square = {} as Square;
+square.color = "blue";
+square.sideLength = 10;
+
+
+interface PenStroke {
+    penWidth: number;
+}
+
+interface Square2 extends Shape, PenStroke {
+    sideLength: number;
+}
+
+let square2 = {} as Square2;
+square2.color = "blue";
+square2.sideLength = 10;
+square2.penWidth = 5.0;
+
+console.log(square2);
+
+interface Counter {
+    (start: number): string;
+    interval: number;
+    reset(): void;
+}
+
+function getCounter(): Counter {
+    let start2: number;
+    let counter = (function(start: number) { start2 = start}) as Counter;
+    counter.interval = 123;
+    counter.reset = function() {
+        console.log(this.interval + start2);
+    };
+    return counter;
+}
+
+let ct = getCounter();
+ct(10);
+ct.interval = 5.0;
+ct.reset();
+
+class Control {
+    private state: any;
+}
+
+interface SelectableControl extends Control {
+    select(): void;
+}
+
+/*
+class Image2 implements SelectableControl {
+    private state: any;
+    select(): void {
+    }
+    // private state: any; // property 'state' is missing in type 'Image';
+}
+*/
+
+class Button extends Control implements SelectableControl {
+    select() { }
+}
+
+class TextBox extends Control {
+    select() { }
+}
+
+class Location2 {
+
+}

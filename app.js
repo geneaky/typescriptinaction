@@ -162,4 +162,25 @@ var digital = createClock(DigitalClock, 12, 17);
 digital.tick();
 var analog = createClock(AnalogClock, 7, 32);
 analog.tick();
+var square = {};
+square.color = "blue";
+square.sideLength = 10;
+var square2 = {};
+square2.color = "blue";
+square2.sideLength = 10;
+square2.penWidth = 5.0;
+console.log(square2);
+function getCounter() {
+    var start2;
+    var counter = (function (start) { start2 = start; });
+    counter.interval = 123;
+    counter.reset = function () {
+        console.log(this.interval + start2);
+    };
+    return counter;
+}
+var ct = getCounter();
+ct(10);
+ct.interval = 5.0;
+ct.reset();
 //# sourceMappingURL=app.js.map
