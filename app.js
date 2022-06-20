@@ -1,3 +1,18 @@
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 var isDone = false;
 console.log(isDone);
 var deciaml = 6;
@@ -102,4 +117,49 @@ var myArray;
 myArray = ["Bob", "Fred"];
 var myStr = myArray[0];
 console.log(myStr);
+var Animal = (function () {
+    function Animal() {
+    }
+    return Animal;
+}());
+var Dog = (function (_super) {
+    __extends(Dog, _super);
+    function Dog() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    return Dog;
+}(Animal));
+var myArray2 = ["Alice", "Bob"];
+var Clock = (function () {
+    function Clock(h, m) {
+        this.currentTime = new Date();
+    }
+    Clock.prototype.setTime = function (d) {
+        this.currentTime = d;
+    };
+    return Clock;
+}());
+function createClock(ctor, hour, minute) {
+    return new ctor(hour, minute);
+}
+var DigitalClock = (function () {
+    function DigitalClock(h, m) {
+    }
+    DigitalClock.prototype.tick = function () {
+        console.log("beep beep");
+    };
+    return DigitalClock;
+}());
+var AnalogClock = (function () {
+    function AnalogClock(h, n) {
+    }
+    AnalogClock.prototype.tick = function () {
+        console.log("tick tick");
+    };
+    return AnalogClock;
+}());
+var digital = createClock(DigitalClock, 12, 17);
+digital.tick();
+var analog = createClock(AnalogClock, 7, 32);
+analog.tick();
 //# sourceMappingURL=app.js.map

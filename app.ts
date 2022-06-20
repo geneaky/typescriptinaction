@@ -245,4 +245,84 @@ interface ReadonlyStringArray {
 let myArray2: ReadonlyStringArray = ["Alice", "Bob"];
 // myArray2[2] = "Mallory"; // error!
 
+interface ClockInterface {
+    currentTime: Date;
+    setTime(d: Date): void;
+}
+
+class Clock implements ClockInterface {
+    currentTime: Date = new Date();
+    constructor(h: number, m: number) {
+    }
+
+    setTime(d: Date): void {
+        this.currentTime = d;
+    }
+}
+
+/*
+interface ClockConstructor {
+    new (hour: number, minute: number);
+}
+
+class Clock2 implements ClockConstructor {
+    currentTime: Date;
+    constructor(h: number, m: number) {
+    }
+    //클래스가 인터페이스 구현시 클래스의 인스턴스만 검사하기 떄문에 스태틱인 생성자는 검사에 포함되지 않음.
+}*/
+
+interface ClockConstructor {
+    new (hour: number, minute: number): ClockInterface2;
+}
+
+interface ClockInterface2 {
+    tick(): void;
+}
+
+function createClock(ctor: ClockConstructor, hour: number, minute: number): ClockInterface2 {
+    return new ctor(hour, minute);
+}
+
+class DigitalClock implements ClockInterface2 {
+    constructor(h: number, m: number) {
+    }
+    tick(): void {
+        console.log("beep beep");
+    }
+}
+
+class AnalogClock implements ClockInterface2 {
+    constructor(h: number, n: number) {
+    }
+    tick(): void {
+        console.log("tick tick");
+    }
+}
+
+let digital = createClock(DigitalClock, 12, 17);
+digital.tick()
+let analog = createClock(AnalogClock, 7, 32);
+analog.tick()
+
+
+/*
+interface ClockConstructor2 {
+    new (hour: number, minute: number);
+}
+
+interface ClockInterface3 {
+    tick(): void;
+}
+
+const Clock2: ClockConstructor2 = class Clock implements ClockInterface3 {
+    constructor(h: number, m: number) {
+    }
+
+    tick() {
+        console.log("beep beep");
+    }
+}
+*/
+
 
