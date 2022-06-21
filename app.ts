@@ -557,3 +557,31 @@ console.log(pickedCard1.card, pickedCard1.suit);
 
 let pickedCard2 = pickCard(15);
 console.log(pickedCard2.card, pickedCard2.suit)
+
+type Easing = "ease-in" | "ease-out" | "ease-in-out";
+
+class UIElement {
+    animate(dx: number, dy: number, easing: Easing) {
+        if(easing === "ease-in") {
+            console.log('a');
+        }else if(easing==="ease-out") {
+            console.log('b');
+        }else if(easing ==="ease-in-out") {
+            console.log('c');
+        }else {
+            console.log('d');
+        }
+    }
+}
+
+let button = new UIElement();
+button.animate(0, 0, "ease-in");
+// button.animate(0, 0, "uneasy"); // not assignable to pararmeter of type 'Easing'
+
+function rollDice(): 1 | 2 | 3 | 4 | 5 | 6 {
+    return (Math.floor(Math.random() * 6) + 1) as 1 | 2 | 3 | 4 | 5 | 6;
+}
+
+const result = rollDice();
+
+console.log(result);

@@ -282,4 +282,30 @@ var pickedCard1 = myDeck[pickCard(myDeck)];
 console.log(pickedCard1.card, pickedCard1.suit);
 var pickedCard2 = pickCard(15);
 console.log(pickedCard2.card, pickedCard2.suit);
+var UIElement = (function () {
+    function UIElement() {
+    }
+    UIElement.prototype.animate = function (dx, dy, easing) {
+        if (easing === "ease-in") {
+            console.log('a');
+        }
+        else if (easing === "ease-out") {
+            console.log('b');
+        }
+        else if (easing === "ease-in-out") {
+            console.log('c');
+        }
+        else {
+            console.log('d');
+        }
+    };
+    return UIElement;
+}());
+var button = new UIElement();
+button.animate(0, 0, "ease-in");
+function rollDice() {
+    return (Math.floor(Math.random() * 6) + 1);
+}
+var result = rollDice();
+console.log(result);
 //# sourceMappingURL=app.js.map
