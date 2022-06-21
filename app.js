@@ -251,4 +251,35 @@ var buildNameFun = function (fname) {
     return fname + " " + rest.join(" ");
 };
 console.log(buildNameFun("joseph", "samuel", "lucas", "mackinzie"));
+var deck = {
+    suits: ["hearts", "spades", "clubs", "diamonds"],
+    cards: Array(52),
+    createCardPicker: function () {
+        var _this = this;
+        return function () {
+            var pickedCard = Math.floor(Math.random() * 52);
+            var pickedSuit = Math.floor(pickedCard / 13);
+            return { suit: _this.suits[pickedSuit], card: pickedCard % 13 };
+        };
+    }
+};
+var cardPicker = deck.createCardPicker();
+var pickedCard = cardPicker();
+console.log(pickedCard.card, pickedCard.suit);
+var suits = ["hearts", "spades", "clubs", "diamonds"];
+function pickCard(x) {
+    if (typeof x == "object") {
+        var pickedCard_1 = Math.floor(Math.random() * x.length);
+        return pickedCard_1;
+    }
+    else if (typeof x == "number") {
+        var pickedSuit = Math.floor(x / 13);
+        return { suit: suits[pickedSuit], card: x % 13 };
+    }
+}
+var myDeck = [{ suit: "dismonds", card: 2 }, { suit: "spades", card: 10 }, { suit: "heaerts", card: 4 }];
+var pickedCard1 = myDeck[pickCard(myDeck)];
+console.log(pickedCard1.card, pickedCard1.suit);
+var pickedCard2 = pickCard(15);
+console.log(pickedCard2.card, pickedCard2.suit);
 //# sourceMappingURL=app.js.map
