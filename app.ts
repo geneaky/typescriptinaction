@@ -585,3 +585,47 @@ function rollDice(): 1 | 2 | 3 | 4 | 5 | 6 {
 const result = rollDice();
 
 console.log(result);
+
+function padLeft(value: string, padding: any) {
+    if(typeof padding === "number") {
+        return Array(padding + 1).join(" ") + value;
+    }
+
+    if(typeof padding === "string") {
+        return padding + value;
+    }
+
+    throw new Error(`Expected string or number, got '${padding}'.`);
+}
+
+console.log(padLeft("Hello world", 5));
+
+declare function padLeft2(value: string, padding: any): string;
+
+// let indentedString = padLeft2("hellow world", true); // 런타입 에러
+
+function padLeft3(value: string, padding: string|number) {
+
+}
+
+// let indentedString2 = padLeft3("hellow word", true); // 컴파일 에러 유니언 타입
+
+interface Bird {
+    fly(): void;
+    layEggs(): void;
+}
+
+interface Fish {
+    swim(): void;
+
+    layEggs(): void;
+}
+
+declare function getSmallPet(): Fish|Bird;
+
+let pet = getSmallPet();
+pet.layEggs();
+
+//2개중 택일로 사용가능하기때문에 layEggs만 동작
+// pet.swim();
+

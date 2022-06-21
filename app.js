@@ -308,4 +308,18 @@ function rollDice() {
 }
 var result = rollDice();
 console.log(result);
+function padLeft(value, padding) {
+    if (typeof padding === "number") {
+        return Array(padding + 1).join(" ") + value;
+    }
+    if (typeof padding === "string") {
+        return padding + value;
+    }
+    throw new Error("Expected string or number, got '".concat(padding, "'."));
+}
+console.log(padLeft("Hello world", 5));
+function padLeft3(value, padding) {
+}
+var pet = getSmallPet();
+pet.layEggs();
 //# sourceMappingURL=app.js.map
