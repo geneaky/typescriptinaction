@@ -536,6 +536,8 @@ class Handler {
 
 let suits = ["hearts", "spades", "clubs", "diamonds"];
 
+function pickCard(x: {suit: string; card: number;}[]): number;
+function pickCard(x: number): {suit: string; card: number;};
 function pickCard(x: any): any {
 
     if(typeof x == "object") {
