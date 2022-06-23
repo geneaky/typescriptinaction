@@ -320,6 +320,27 @@ function padLeft(value, padding) {
 console.log(padLeft("Hello world", 5));
 function padLeft3(value, padding) {
 }
-var pet = getSmallPet();
-pet.layEggs();
+function networkStatus(state) {
+    switch (state.state) {
+        case "loading":
+            return "Downloading..";
+        case "fail":
+            return "Error ".concat(state.code, " downloading");
+        case "success":
+            return "Download ".concat(state.response.title, " - ").concat(state.response.summary);
+    }
+}
+var handleArtistsResponse = function (response) {
+    if (response.error) {
+        console.error(response.error.message);
+        return;
+    }
+    console.log(response.artists);
+};
+var testResposne = {
+    artists: [{ name: 'hi' }, { name: 'bi' }, { name: 'ci' }],
+    success: true,
+    error: { message: 'hi' }
+};
+handleArtistsResponse(testResposne);
 //# sourceMappingURL=app.js.map

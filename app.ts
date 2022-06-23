@@ -621,11 +621,76 @@ interface Fish {
     layEggs(): void;
 }
 
-declare function getSmallPet(): Fish|Bird;
+// declare function getSmallPet(): Fish|Bird;
 
-let pet = getSmallPet();
-pet.layEggs();
+// let pet = getSmallPet();
+// pet.layEggs();
 
 //2개중 택일로 사용가능하기때문에 layEggs만 동작
 // pet.swim();
 
+type NetworLoadingState = {
+    state: "loading";
+};
+
+type NetworFailState = {
+    state: "fail";
+    code: number;
+};
+
+type NetworSuccessState = {
+    state: "success";
+    response: {
+        title: string;
+        duartion: number;
+        summary: string;
+    }
+};
+
+type NetworkState = | NetworLoadingState | NetworFailState | NetworSuccessState;
+
+function networkStatus(state: NetworkState): string {
+    // state.code; //오류 발생
+
+    switch(state.state) {
+        case "loading":
+            return "Downloading..";
+        case "fail":
+            return `Error ${state.code} downloading`;
+        case "success":
+            return `Download ${state.response.title} - ${state.response.summary}`;
+    }
+}
+
+interface ErrorHandling {
+    success: boolean;
+    error?: {message: string};
+}
+
+interface ArtworksData {
+    artworks: {title: string}[];
+}
+
+interface ArtistsData {
+    artists: {name: string}[];
+}
+
+type ArtworksResponse = ArtworksData & ErrorHandling;
+type ArtistsResponse = ArtistsData & ErrorHandling;
+
+const handleArtistsResponse = (response: ArtistsResponse) => {
+    if(response.error) {
+        console.error(response.error.message);
+        return;
+    }
+
+    console.log(response.artists);
+}
+
+let testResposne: ArtistsResponse = {
+    artists: [{name: 'hi'},{name:'bi'},{name:'ci'}],
+    success: true,
+    error: {message: 'hi'}
+}
+
+handleArtistsResponse(testResposne);
