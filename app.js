@@ -373,4 +373,80 @@ function extend(first, second) {
 }
 var jim = extend(new Person("Jim"), ConsoleLogger.prototype);
 jim.log(jim.name);
+var Greeter = (function () {
+    function Greeter(message) {
+        this.greeting = message;
+    }
+    Greeter.prototype.greet = function () {
+        return "Hello, " + this.greeting;
+    };
+    return Greeter;
+}());
+var greeter = new Greeter("world");
+console.log(greeter.greet());
+var Animal2 = (function () {
+    function Animal2() {
+    }
+    Animal2.prototype.move = function (distanceInMeters) {
+        if (distanceInMeters === void 0) { distanceInMeters = 0; }
+        console.log("Animal moved ".concat(distanceInMeters, "m."));
+    };
+    return Animal2;
+}());
+var Dog2 = (function (_super) {
+    __extends(Dog2, _super);
+    function Dog2() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    Dog2.prototype.bark = function () {
+        console.log("Woof! Woof!");
+    };
+    Dog2.prototype.move = function (distanceInMeters) {
+        if (distanceInMeters === void 0) { distanceInMeters = 0; }
+        console.log('mo,,');
+    };
+    return Dog2;
+}(Animal2));
+var dog = new Dog2();
+dog.bark();
+dog.move(10);
+dog.bark();
+var Animal3 = (function () {
+    function Animal3(tehName) {
+        this.name = tehName;
+    }
+    Animal3.prototype.move = function (distanceInMeters) {
+        if (distanceInMeters === void 0) { distanceInMeters = 0; }
+        console.log("".concat(this.name, " moved ").concat(distanceInMeters));
+    };
+    return Animal3;
+}());
+var Snake = (function (_super) {
+    __extends(Snake, _super);
+    function Snake(name) {
+        return _super.call(this, name) || this;
+    }
+    Snake.prototype.move = function (distanceInMeters) {
+        if (distanceInMeters === void 0) { distanceInMeters = 5; }
+        console.log("Slithering...");
+        _super.prototype.move.call(this, distanceInMeters);
+    };
+    return Snake;
+}(Animal3));
+var Horse = (function (_super) {
+    __extends(Horse, _super);
+    function Horse(name) {
+        return _super.call(this, name) || this;
+    }
+    Horse.prototype.move = function (distanceInMeters) {
+        if (distanceInMeters === void 0) { distanceInMeters = 45; }
+        console.log("Galloping...");
+        _super.prototype.move.call(this, distanceInMeters);
+    };
+    return Horse;
+}(Animal3));
+var sam = new Snake("Sammy the Python");
+var tom = new Horse("Tommy the Palomino");
+sam.move();
+tom.move(34);
 //# sourceMappingURL=app.js.map

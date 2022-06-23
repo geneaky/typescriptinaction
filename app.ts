@@ -733,3 +733,79 @@ function extend<First extends {}, Second extends {}>(
 const jim = extend(new Person("Jim"), ConsoleLogger.prototype);
 jim.log(jim.name);
 
+class Greeter {
+    greeting: string;
+    constructor(message: string) {
+        this.greeting = message;
+    }
+
+    greet() {
+        return "Hello, " + this.greeting;
+    }
+}
+
+let greeter = new Greeter("world");
+
+console.log(greeter.greet());
+
+class Animal2 {
+    move(distanceInMeters: number = 0) {
+        console.log(`Animal moved ${distanceInMeters}m.`);
+    }
+}
+
+class Dog2 extends Animal2 {
+    bark() {
+        console.log("Woof! Woof!");
+    }
+
+
+    move(distanceInMeters: number = 0) {
+        console.log('mo,,');
+    }
+}
+
+const dog = new Dog2();
+dog.bark();
+dog.move(10);
+dog.bark();
+
+class Animal3 {
+    name: string;
+
+    constructor(tehName: string) {
+        this.name = tehName;
+    }
+
+    move(distanceInMeters: number = 0) {
+        console.log(`${this.name} moved ${distanceInMeters}`);
+    }
+}
+
+class Snake extends Animal3 {
+    constructor(name: string) {
+        super(name);
+    }
+
+    move(distanceInMeters = 5) {
+        console.log("Slithering...");
+        super.move(distanceInMeters);
+    }
+}
+
+class Horse extends Animal3 {
+    constructor(name: string) {
+        super(name);
+    }
+    move(distanceInMeters = 45) {
+        console.log("Galloping...");
+        super.move(distanceInMeters);
+    }
+}
+
+let sam = new Snake("Sammy the Python");
+let tom: Animal3 = new Horse("Tommy the Palomino");
+
+sam.move();
+tom.move(34);
+
