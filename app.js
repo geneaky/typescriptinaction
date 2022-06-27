@@ -465,5 +465,46 @@ var Animal5 = (function () {
     }
     return Animal5;
 }());
-new Animal5("Cat").name;
+new Animal5("Cat");
+var Animal6 = (function () {
+    function Animal6() {
+    }
+    Animal6.prototype.move = function () {
+        console.log("roaming the earth...");
+    };
+    return Animal6;
+}());
+function identity(arg) {
+    return arg;
+}
+function identity2(arg) {
+    return arg;
+}
+function identity3(arg) {
+    return arg;
+}
+var output = identity3("myString");
+console.log(output);
+var myIdentity = identity3;
+var GenericNumber = (function () {
+    function GenericNumber() {
+    }
+    return GenericNumber;
+}());
+var myGenericNumber = new GenericNumber();
+myGenericNumber.zeroValue = 0;
+myGenericNumber.add = function (x, y) {
+    return x + y;
+};
+function loggingIdentity(arg) {
+    console.log(arg.length);
+    return arg;
+}
+loggingIdentity(['1', 3, '4', 6]);
+function getProperty(obj, key) {
+    return obj[key];
+}
+var x5 = { a: 1, b: 2, c: 3, d: 4 };
+getProperty(x5, "a");
+getProperty(x5, "m");
 //# sourceMappingURL=app.js.map

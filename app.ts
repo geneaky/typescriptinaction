@@ -837,3 +837,54 @@ abstract class Animal6 {
     }
 }
 
+function identity(arg: number): number {
+    return arg;
+}
+
+function identity2(arg: any): any{
+    return arg;
+}
+
+function identity3<T>(arg: T): T{
+    return arg;
+}
+
+let output = identity3<string>("myString");
+
+console.log(output);
+
+interface GenericIdentityFn<T> {
+    (arg: T): T;
+}
+
+let myIdentity: GenericIdentityFn<number> = identity3;
+
+class GenericNumber<T> {
+    zeroValue: T;
+    add: (x: T, y: T) => T;
+}
+
+let myGenericNumber = new GenericNumber<number>();
+myGenericNumber.zeroValue = 0;
+myGenericNumber.add = function(x, y) {
+    return x + y;}
+
+interface Lengthwise {
+    length: number;
+}
+
+function loggingIdentity<T extends Lengthwise>(arg: T): T {
+    console.log(arg.length);
+    return arg;
+}
+
+loggingIdentity(['1',3,'4',6]);
+
+function getProperty<T,K extends keyof T>(obj: T, key: K) {
+    return obj[key];
+}
+
+let x5 = {a: 1, b:2, c:3, d:4};
+
+getProperty(x5, "a");
+getProperty(x5,"m");
