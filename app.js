@@ -449,4 +449,21 @@ var sam = new Snake("Sammy the Python");
 var tom = new Horse("Tommy the Palomino");
 sam.move();
 tom.move(34);
+var Animal4 = (function () {
+    function Animal4(theName) {
+        this.name = theName;
+    }
+    Animal4.prototype.move = function (distanceInMeters) {
+        if (distanceInMeters === void 0) { distanceInMeters = 0; }
+        console.log("".concat(this.name, " moved ").concat(distanceInMeters));
+    };
+    return Animal4;
+}());
+var Animal5 = (function () {
+    function Animal5(theName) {
+        this.name = theName;
+    }
+    return Animal5;
+}());
+new Animal5("Cat").name;
 //# sourceMappingURL=app.js.map

@@ -809,3 +809,31 @@ let tom: Animal3 = new Horse("Tommy the Palomino");
 sam.move();
 tom.move(34);
 
+class Animal4 {
+     name: string;
+
+    public constructor(theName: string) {
+        this.name = theName;
+    }
+
+    public move(distanceInMeters: number = 0) {
+        console.log(`${this.name} moved ${distanceInMeters}`);
+    }
+}
+
+class Animal5 {
+    private name: string;
+    constructor(theName: string) {
+        this.name = theName;
+    }
+}
+
+new Animal5("Cat");
+
+abstract class Animal6 {
+    abstract makeSound(): void;
+    move(): void {
+        console.log("roaming the earth...");
+    }
+}
+
